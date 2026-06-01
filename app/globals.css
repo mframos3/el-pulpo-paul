@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+/* Radix Colors — light */
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/purple.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/amber.css";
+@import "@radix-ui/colors/red.css";
+
+/* Radix Colors — dark (applied when .dark / .dark-theme present on <html>) */
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/purple-dark.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/amber-dark.css";
+@import "@radix-ui/colors/red-dark.css";
+
+/* ================================================================
+   APP TOKENS (semantic)
+   The 95% neutral story sits on gray; purple is the 5-15% accent.
+   ================================================================ */
+/* ----------------------------------------------------------------
+   SEMANTIC TOKENS — define intent, not color.
+   Components should use these (bg-surface, text-muted, bg-brand…)
+   so re-theming = change these aliases, not 50 component files.
+   ---------------------------------------------------------------- */
+:root,
+.light,
+.light-theme {
+  /* surfaces & borders */
+  --bg: var(--gray-1);
+  --surface-1: var(--gray-2);
+  --surface-2: var(--gray-3);
+  --surface-3: var(--gray-4);
+  --surface-hover: var(--gray-4);
+  --border-subtle: var(--gray-6);
+  --border-default: var(--gray-7);
+  --border-strong: var(--gray-8);
+
+  /* text */
+  --text: var(--gray-12);
+  --text-strong: var(--gray-12);
+  --text-muted: var(--gray-11);
+  --text-subtle: var(--gray-10);
+  --text-disabled: var(--gray-9);
+
+  /* brand */
+  --brand-surface: var(--purple-3);
+  --brand-surface-hover: var(--purple-4);
+  --brand-border: var(--purple-7);
+  --brand: var(--purple-9);
+  --brand-hover: var(--purple-10);
+  --brand-active: var(--purple-11);
+  --brand-text: var(--purple-11);
+  --on-brand: #ffffff;
+
+  /* states */
+  --success-surface: var(--green-3);
+  --success: var(--green-9);
+  --success-text: var(--green-11);
+
+  --warning-surface: var(--amber-3);
+  --warning: var(--amber-9);
+  --warning-text: var(--amber-11);
+
+  --danger-surface: var(--red-3);
+  --danger: var(--red-9);
+  --danger-text: var(--red-11);
+}
+
+.dark,
+.dark-theme {
+  --bg: var(--gray-1);
+  --surface-1: var(--gray-2);
+  --surface-2: var(--gray-3);
+  --surface-3: var(--gray-4);
+  --surface-hover: var(--gray-4);
+  --border-subtle: var(--gray-6);
+  --border-default: var(--gray-7);
+  --border-strong: var(--gray-8);
+
+  --text: var(--gray-12);
+  --text-strong: var(--gray-12);
+  --text-muted: var(--gray-11);
+  --text-subtle: var(--gray-10);
+  --text-disabled: var(--gray-9);
+
+  --brand-surface: var(--purple-3);
+  --brand-surface-hover: var(--purple-4);
+  --brand-border: var(--purple-7);
+  --brand: var(--purple-9);
+  --brand-hover: var(--purple-10);
+  --brand-active: var(--purple-11);
+  --brand-text: var(--purple-11);
+  --on-brand: #ffffff;
+
+  --success-surface: var(--green-3);
+  --success: var(--green-9);
+  --success-text: var(--green-11);
+
+  --warning-surface: var(--amber-3);
+  --warning: var(--amber-9);
+  --warning-text: var(--amber-11);
+
+  --danger-surface: var(--red-3);
+  --danger: var(--red-9);
+  --danger-text: var(--red-11);
+}
+
+/* ================================================================
+   TAILWIND v4 THEME BRIDGE
+   Usage: bg-gray-3, text-gray-12, bg-purple-9, text-purple-11,
+          bg-green-9 (success), bg-amber-9 (warning/podium), bg-red-9 (error)
+   ================================================================ */
+@theme {
+  /* Semantic tokens — use these in components */
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-hover: var(--surface-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-strong: var(--text-strong);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-text-disabled: var(--text-disabled);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-hover: var(--brand-surface-hover);
+  --color-brand-border: var(--brand-border);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-text: var(--brand-text);
+  --color-on-brand: var(--on-brand);
+  --color-success-surface: var(--success-surface);
+  --color-success: var(--success);
+  --color-success-text: var(--success-text);
+  --color-warning-surface: var(--warning-surface);
+  --color-warning: var(--warning);
+  --color-warning-text: var(--warning-text);
+  --color-danger-surface: var(--danger-surface);
+  --color-danger: var(--danger);
+  --color-danger-text: var(--danger-text);
+
+  /* Raw Radix steps still available for exceptional cases */
+
+  --color-gray-1: var(--gray-1);
+  --color-gray-2: var(--gray-2);
+  --color-gray-3: var(--gray-3);
+  --color-gray-4: var(--gray-4);
+  --color-gray-5: var(--gray-5);
+  --color-gray-6: var(--gray-6);
+  --color-gray-7: var(--gray-7);
+  --color-gray-8: var(--gray-8);
+  --color-gray-9: var(--gray-9);
+  --color-gray-10: var(--gray-10);
+  --color-gray-11: var(--gray-11);
+  --color-gray-12: var(--gray-12);
+
+  --color-purple-1: var(--purple-1);
+  --color-purple-2: var(--purple-2);
+  --color-purple-3: var(--purple-3);
+  --color-purple-4: var(--purple-4);
+  --color-purple-5: var(--purple-5);
+  --color-purple-6: var(--purple-6);
+  --color-purple-7: var(--purple-7);
+  --color-purple-8: var(--purple-8);
+  --color-purple-9: var(--purple-9);
+  --color-purple-10: var(--purple-10);
+  --color-purple-11: var(--purple-11);
+  --color-purple-12: var(--purple-12);
+
+  --color-green-1: var(--green-1);
+  --color-green-2: var(--green-2);
+  --color-green-3: var(--green-3);
+  --color-green-4: var(--green-4);
+  --color-green-5: var(--green-5);
+  --color-green-6: var(--green-6);
+  --color-green-7: var(--green-7);
+  --color-green-8: var(--green-8);
+  --color-green-9: var(--green-9);
+  --color-green-10: var(--green-10);
+  --color-green-11: var(--green-11);
+  --color-green-12: var(--green-12);
+
+  --color-amber-1: var(--amber-1);
+  --color-amber-2: var(--amber-2);
+  --color-amber-3: var(--amber-3);
+  --color-amber-4: var(--amber-4);
+  --color-amber-5: var(--amber-5);
+  --color-amber-6: var(--amber-6);
+  --color-amber-7: var(--amber-7);
+  --color-amber-8: var(--amber-8);
+  --color-amber-9: var(--amber-9);
+  --color-amber-10: var(--amber-10);
+  --color-amber-11: var(--amber-11);
+  --color-amber-12: var(--amber-12);
+
+  --color-red-1: var(--red-1);
+  --color-red-2: var(--red-2);
+  --color-red-3: var(--red-3);
+  --color-red-4: var(--red-4);
+  --color-red-5: var(--red-5);
+  --color-red-6: var(--red-6);
+  --color-red-7: var(--red-7);
+  --color-red-8: var(--red-8);
+  --color-red-9: var(--red-9);
+  --color-red-10: var(--red-10);
+  --color-red-11: var(--red-11);
+  --color-red-12: var(--red-12);
+
+  --font-logo: var(--font-logo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* ================================================================
+   BASE
+   ================================================================ */
+:root {
+  color-scheme: light;
+}
+.dark,
+.dark-theme {
+  color-scheme: dark;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+}
+
+/* Stable emoji font stack — guarantees regional-indicator flags render correctly */
+.emoji,
+.flag {
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    "Twemoji Mozilla",
+    sans-serif;
+  font-feature-settings: normal;
+  font-variant-emoji: emoji;
+}
+
+.pitch-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--text) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--text) 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.card-elevated {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, var(--text) 4%, transparent) inset,
+    0 16px 40px -20px color-mix(in oklab, var(--text) 18%, transparent);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" on, "ss01" on;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
