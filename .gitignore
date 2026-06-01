@@ -40,11 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Convex generated types (created by `bunx convex dev`)
-/convex/_generated/
+# Convex generated types — committed so CI can type-check without a live deployment.
+# Regenerated automatically by `bunx convex dev`; safe to overwrite.
 
 # Bun
-bun.lock
+# bun.lock is committed for reproducible CI installs
 
 # Local env
 .env*.local
