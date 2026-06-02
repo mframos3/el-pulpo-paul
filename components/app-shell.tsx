@@ -14,6 +14,7 @@ const NAV = [
   { href: "/matches", label: "Partidos", icon: "◆" },
   { href: "/bracket", label: "Bracket", icon: "▲" },
   { href: "/leaderboard", label: "Tabla", icon: "★" },
+  { href: "/news", label: "Noticias", icon: "◉" },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -109,7 +110,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* MOBILE BOTTOM NAV --------------------------------------- */}
       <nav className="sm:hidden fixed bottom-3 left-3 right-3 z-30 rounded-2xl border border-border-subtle/60 bg-surface-1/80 backdrop-blur-xl shadow-2xl shadow-black/40">
-        <div className="grid grid-cols-4 px-1 py-1.5">
+        <div className="grid grid-cols-5 px-1 py-1.5">
           {NAV.map((n) => {
             const active = pathname.startsWith(n.href);
             return (
