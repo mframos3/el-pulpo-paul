@@ -80,12 +80,16 @@ bun run build            # Build de producción
 
 ## Despliegue
 
-```bash
-bunx convex deploy       # Backend → producción
-vercel --prod            # Frontend
-```
+Guía paso a paso: **[DEPLOY.md](./DEPLOY.md)** (Vercel Hobby + Convex free).
 
-En el dashboard de Vercel define `NEXT_PUBLIC_CONVEX_URL` con la URL del deployment de prod de Convex. Recuerda también poner los secretos en producción (`bunx convex env set --prod ...`).
+Resumen:
+
+1. `bunx convex deploy` y secretos en Convex (`AUTH_RESEND_KEY`, `AUTH_EMAIL_FROM`, `FOOTBALL_DATA_KEY`, `SITE_URL`).
+2. Importar el repo en Vercel; agregar solo `CONVEX_DEPLOY_KEY` (prod). El build usa [`vercel.json`](vercel.json) → `bunx convex deploy --cmd 'bun run build'`.
+3. Tras el primer deploy, `bunx convex env set --prod SITE_URL https://tu-app.vercel.app`.
+4. Bootstrap en producción: admin → sembrar reglas → sync partidos → invitaciones.
+
+`SITE_URL` = URL pública de Next (redirects de magic link). `CONVEX_SITE_URL` lo define Convex automáticamente.
 
 ## Estructura
 
